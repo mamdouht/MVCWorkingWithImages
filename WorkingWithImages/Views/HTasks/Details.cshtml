@@ -1,0 +1,46 @@
+﻿@model WorkingWithImages.Models.HTask
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HTask</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img id="Image" src="@Url.Action("GetImage", "HTasks", new { TaskID = Model.HTaskId })"
+                 alt="Task Image" style="margin: 0 auto; display: block; width:500px;" />
+        </dd>        
+
+       
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HTaskId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WorkingWithImages.Models.HTask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discription)
+        </th>    
+        <th>
+            @Html.DisplayNameFor(model => model.thumbnail)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discription)
+        </td>       
+      
+        <td>
+            <img src="@Url.Action("GetThumbnailImage", "HTasks", new { TaskID = item.HTaskId })" alt="Task Image" />
+        </td>
+
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HTaskId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HTaskId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HTaskId })
+        </td>
+    </tr>
+}
+
+</table>
